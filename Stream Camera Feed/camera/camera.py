@@ -3,11 +3,6 @@ from picamera.array import PiRGBArray
 
 import datetime as dt
 import subprocess
-import os
-import socket
-import io
-import zmq
-import numpy as np
 
 import cv2
 

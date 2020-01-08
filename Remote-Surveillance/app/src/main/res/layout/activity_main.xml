@@ -20,13 +20,13 @@
 
     <EditText
         android:id="@+id/ipAddress"
-        android:layout_width="183dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="217dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="192.168.1.12"
+        android:text="192.168.192.120"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -50,13 +50,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDown"
         app:layout_constraintHorizontal_bias="0.033"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ipAddress" />
 
     <EditText
         android:id="@+id/portNumber"
         android:layout_width="90dp"
         android:layout_height="73dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="40dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="21567"

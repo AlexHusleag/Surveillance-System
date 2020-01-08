@@ -1,68 +1,86 @@
 import picamera
+from picamera.array import PiRGBArray
+
 import datetime as dt
 import subprocess
 import os
 import socket
 import io
+import zmq
+import numpy as np
+
+import cv2
 
 from camera import motionDetection
 import filename as filename
-from uploadCloud import uploadToFirebase
-
-
-
-class MyOutput(object):
-    def __init__(self, filename, sock):
-        self.output_file = io.open(filename, 'wb')
-        self.output_sock = sock.makefile('wb')
-
-    def write(self, buf):
-        self.output_file.write(buf)
-        self.output_sock.write(buf)
-
-    def flush(self):
-        self.output_file.flush()
-        self.output_sock.flush()
-
-    def close(self):
-        self.output_file.close()
-        self.output_sock.close()
-
-
-# Connect a socket to a remote server on port 8000
-sock = socket.socket()
-sock.connect(('192.168.1.6', 8000))
-
-
+from uploadCloud import uploadToFirebase, uploadToDropbox
+from faceRecognition import faceRecognition
 
 
 def record():
     fname = filename.setFileName(dt.datetime.now().strftime('%Y-%m-%d') + "-" + dt.datetime.now().strftime('%H-%M-%S'))
-
-    with picamera.PiCamera(resolution=(600, 400), framerate=24) as camera:
+    with picamera.PiCamera(resolution=(500, 300), framerate=30) as camera:
         with motionDetection.DetectMotion(camera) as output:
-            camera.rotation = 180
+            with picamera.array.PiRGBArray(camera) as frame:
+                camera.rotation = 180
+                camera.start_preview()
+                camera.annotate_background = picamera.Color('black')
 
-            camera.start_preview()
-            camera.annotate_background = picamera.Color('black')
+                camera.start_recording(fname + '.h264', format='h264', motion_output=output)
 
-            # Construct an instance of our custom output splitter with a filename
-            # and a connected socket
-            my_output = MyOutput(fname + '.h264', sock)
+                start = dt.datetime.now()
+                # while (dt.datetime.now() - start).seconds < 5:
+                while True:
+                    camera.wait_recording(0.1)
 
-            camera.start_recording(my_output, format='h264', motion_output=output)
+                    camera.capture(frame, "bgr", use_video_port=True)
+                    print('Captured %dx%d image' % (
+                        frame.array.shape[1], frame.array.shape[0]))
 
-            start = dt.datetime.now()
-            while (dt.datetime.now() - start).seconds < 10:
-                camera.annotate_text = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                camera.wait_recording(0.1)
-            camera.stop_recording()
+                    small_frame = cv2.resize(frame.array, (0, 0), fx=0.25, fy=0.25)
 
+                    face_locations, face_names = faceRecognition.process_frame(small_frame)
+
+                    for (top, right, bottom, left), name in zip(face_locations, face_names):
+                        # Scale back up face locations since the frame we detected in was scaled to 1/4 size
+                        top *= 4
+                        right *= 4
+                        bottom *= 4
+                        left *= 4
+
+                        # Draw a box around the face
+                        cv2.rectangle(frame.array, (left, top), (right, bottom), (0, 0, 255), 2)
+
+                        # Draw a label with a name below the face
+                        cv2.rectangle(frame.array, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+                        font = cv2.FONT_HERSHEY_DUPLEX
+                        cv2.putText(frame.array, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+
+
+                    # show the frame
+                    cv2.imshow("Live Stream", frame.array)
+                    key = cv2.waitKey(1) & 0xFF
+
+                    # clear the stream in preparation for the next frame
+                    frame.truncate(0)
+                    camera.wait_recording(0.1)
+
+                    # if the `q` key was pressed, break from the loop
+                    if key == ord("q"):
+                        break
+
+                cv2.destroyAllWindows()
+                camera.stop_recording()
+
+    print("H264 TO MP3")
     subprocess.run(['MP4Box', '-add', fname + '.h264', fname + '.mp4'])
 
+    print(fname + ".mp4")
     uploadToFirebase.uploadToFirebase(fname + ".mp4")
 
-    os.remove(fname + ".mp4")
-    os.remove(fname + ".h264")
-    print("Files deleted")
+    uploadToDropbox.uploadToDropbox(fname+".mp4")
+
+    # os.remove(fname + ".mp4")
+    # os.remove(fname + ".h264")
+    # print("Files deleted")
 

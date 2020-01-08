@@ -1,3 +1,13 @@
+import getch
 from camera import camera
 
-camera.record()
+
+char = getch.getch()
+while True:
+    if char == 'a':
+        camera.record()
+        break
+
+
+
+

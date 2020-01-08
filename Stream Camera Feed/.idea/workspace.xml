@@ -32,10 +32,16 @@
   <component name="ProjectId" id="1UJLThpn5CikLEkBbZTFtDWzHoE" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dataset" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataset" />
+      <recent name="$PROJECT_DIR$/backup" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/models" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/uploadCloud" />
       <recent name="$PROJECT_DIR$/camera" />
@@ -77,6 +83,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="camera-BACKUP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Send Raspberry Pi Camera Feed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backup" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backup/camera-BACKUP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="camera" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Send Raspberry Pi Camera Feed" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,7 +127,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="livestream" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Send Raspberry Pi Camera Feed" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -112,7 +140,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/livestream.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="uploadToDropbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Send Raspberry Pi Camera Feed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/uploadCloud" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/uploadCloud/uploadToDropbox.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -125,7 +175,9 @@
       <list>
         <item itemvalue="Python.__main__" />
         <item itemvalue="Python.camera" />
-        <item itemvalue="Python.livestream" />
+        <item itemvalue="Python.uploadToDropbox" />
+        <item itemvalue="Python.camera-BACKUP" />
+        <item itemvalue="Python.demo" />
       </list>
     </recent_temporary>
   </component>
@@ -145,6 +197,17 @@
       <workItem from="1577978594361" duration="150000" />
       <workItem from="1577979487829" duration="11939000" />
       <workItem from="1577997933601" duration="3792000" />
+      <workItem from="1578171323767" duration="10184000" />
+      <workItem from="1578219148983" duration="3001000" />
+      <workItem from="1578222231948" duration="5919000" />
+      <workItem from="1578231636104" duration="551000" />
+      <workItem from="1578232284295" duration="3630000" />
+      <workItem from="1578260988623" duration="647000" />
+      <workItem from="1578262222072" duration="1754000" />
+      <workItem from="1578438583807" duration="1290000" />
+      <workItem from="1578441390843" duration="7049000" />
+      <workItem from="1578491030608" duration="554000" />
+      <workItem from="1578493057340" duration="12745000" />
     </task>
     <servers />
   </component>
@@ -155,9 +218,15 @@
     <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$camera.coverage" NAME="camera Coverage Results" MODIFIED="1578001268233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/camera" />
     <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$livestream.coverage" NAME="livestream Coverage Results" MODIFIED="1578000801724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$uploadToDropbox.coverage" NAME="uploadToDropbox Coverage Results" MODIFIED="1575131591960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$uploadToFirebase.coverage" NAME="uploadToFirebase Coverage Results" MODIFIED="1577988941371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stream_Camera_Feed$uploadToDropbox.coverage" NAME="uploadToDropbox Coverage Results" MODIFIED="1578505338096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/uploadCloud" />
+    <SUITE FILE_PATH="coverage/Stream_Camera_Feed$camera.coverage" NAME="camera Coverage Results" MODIFIED="1578505497281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/camera" />
     <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$camera__1_.coverage" NAME="camera (1) Coverage Results" MODIFIED="1577993383195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stream_Camera_Feed$test.coverage" NAME="test Coverage Results" MODIFIED="1578234677685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stream_Camera_Feed$camera_BACKUP.coverage" NAME="camera-BACKUP Coverage Results" MODIFIED="1578503025555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backup" />
+    <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$uploadToFirebase.coverage" NAME="uploadToFirebase Coverage Results" MODIFIED="1577988941371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stream_Camera_Feed$demo.coverage" NAME="demo Coverage Results" MODIFIED="1578445740463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1578001463188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stream_Camera_Feed$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1578513228889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Send_Raspberry_Pi_Camera_Feed$client.coverage" NAME="client Coverage Results" MODIFIED="1575117141613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

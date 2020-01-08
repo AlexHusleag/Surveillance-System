@@ -80,11 +80,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-               // InetAddress inetAddress = InetAddress.getByName(MainActivity.wifiModuleIp);
                 socket = new Socket(MainActivity.wifiModuleIp, MainActivity.wifiModulePort);
-//                DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-//                dataOutputStream.writeBytes(CMD);
-//                dataOutputStream.close();
                 PrintWriter pw = new PrintWriter(socket.getOutputStream());
                 pw.write(CMD.trim().replaceAll("\n",""));
                 pw.flush();

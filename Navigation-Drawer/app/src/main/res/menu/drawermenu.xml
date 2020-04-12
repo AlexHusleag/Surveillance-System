@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_db"
+        android:icon="@drawable/ic_indent_svgrepo_com"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/nav_livestream"
+        android:icon="@drawable/ic_video_player_streaming_svgrepo_com"
+        android:title="Live" />
+    <item
+        android:id="@+id/nav_videos"
+        android:icon="@drawable/ic_play_svgrepo_com"
+        android:title="Videos" />
+    <item
+        android:id="@+id/nav_servo"
+        android:icon="@drawable/ic_search_svgrepo_com"
+        android:title="Servo" />
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings_svgrepo_com"
+        android:title="Settings" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout_svgrepo_com"
+        android:title="Logout" />
+</group>
+</menu>

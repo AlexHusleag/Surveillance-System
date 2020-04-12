@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "927825414105",
+    "firebase_url": "https://video-surveillance-580ac.firebaseio.com",
+    "project_id": "video-surveillance-580ac",
+    "storage_bucket": "video-surveillance-580ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927825414105:android:d362de6f0b33c39a017bc8",
+        "android_client_info": {
+          "package_name": "com.example.navigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927825414105-sap6i1j1f1g5plim41m0mj68tcumdguf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.navigation",
+            "certificate_hash": "ab9ee45fff010ad17c198d01f238eac204f6588e"
+          }
+        },
+        {
+          "client_id": "927825414105-5fnmf218oqtdeogl1c66p41mr0o881m2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN8IVD2NIb_IayLoYaAgPgU7MnMqcxxZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927825414105-5fnmf218oqtdeogl1c66p41mr0o881m2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

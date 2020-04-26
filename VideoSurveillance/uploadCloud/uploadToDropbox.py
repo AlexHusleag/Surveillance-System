@@ -14,7 +14,7 @@ def uploadToDropbox(FILE_PATH):
 
         print(FILE_PATH)
 
-        dbx = dropbox.Dropbox('VBoOUgDO7KAAAAAAAAAAhz3CyZgPsgAy1s9RRdLu_T9Q16JiH9jNWJaxldXUD0uB')
+        dbx = dropbox.Dropbox('VBoOUgDO7KAAAAAAAAAAk0233leYV6dNaUDt4wTdDPPtDPn-J3WeIjIf616YgnKI')
 
         if file_size <= CHUNK_SIZE:
             # dbx.files_upload(f.read(), "/" + FILE_PATH)

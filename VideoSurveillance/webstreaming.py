@@ -1,15 +1,9 @@
-# USAGE
-# python motiondetection.py --ip 0.0.0.0 --port 8000
-
-# import the necessary packages
 from motiondetection.singlemotiondetector import SingleMotionDetector
 from imutils.video import VideoStream
 from flask import Response
 from flask import Flask
 from flask import render_template
-from flask import request
 import threading
-import argparse
 import datetime
 import imutils
 import time
@@ -17,16 +11,28 @@ import cv2
 import datetime as dt
 import concurrent.futures
 import filename as filename
-import MotionSensor.MotionSensor as MotionSensor
-from uploadCloud import uploadToFirebase, uploadToDropbox
 
-# initialize the output frame and a lock used to ensure thread-safe
-# exchanges of the output frames (useful for multiple browsers/tabs
-# are viewing tthe stream)
+from uploadCloud import uploadToFirebase
+from Servo.pi_server import activate_servo
+
+
+class UploadFile:
+    def __init__(self):
+        self._running = True
+
+    def terminate(self):
+        self._running = False
+
+    def run(self, previous_fname):
+        while self._running:
+            uploadToFirebase.uploadToFirebase(previous_fname + ".mp4")
+
+upload = UploadFile()
+
 outputFrame = None
 
 previous_contor = -1
-current_contor = -1      # nu a fost inca initializat
+current_contor = 0      # nu a fost inca initializat
 
 lock = threading.Lock()
 
@@ -42,14 +48,10 @@ fourcc = cv2.VideoWriter_fourcc(*'h264')
 # vs = VideoStream(src=0, resolution=(480, 360)).start()
 time.sleep(0.5)
 
-previous_fname=None
+previous_fname = None
 fname = filename.setFileName(dt.datetime.now().strftime('%Y-%m-%d') + "-" + dt.datetime.now().strftime('%H-%M-%S'))
 
 video_writer = cv2.VideoWriter(fname+".mp4", fourcc, 30, (int(vs.stream.get(3)), int(vs.stream.get(4))))
-
-print(vs.stream.get(3))
-print(vs.stream.get(4))
-print(vs.stream.get(5))
 
 vs.start()
 
@@ -58,16 +60,12 @@ def uploadFiles():
     time.sleep(10)
     while True:
         time.sleep(10)
-        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-            executor.submit(uploadToDropbox.uploadToDropbox, "/home/pi/Desktop/VideoSurveillance/" + previous_fname + ".mp4")
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            # executor.submit(uploadToDropbox.uploadToDropbox, "/home/pi/Desktop/VideoSurveillance/" + previous_fname + ".mp4")
             executor.submit(uploadToFirebase.uploadToFirebase, previous_fname + ".mp4")
-        #     if previous_contor == current_contor and previous_contor == 0:
-        #         print("Shutdown server")
-        #         shutdown_server()
-        #         executor.shutdown()
-        # print("Iesim din uploadFiles")
-        # return
-
+            if previous_contor == current_contor:
+                executor.shutdown(False)
+                return
 
 
 @app.route("/")
@@ -101,17 +99,24 @@ def detect_motion(frameCount):
             # global video_writer
             video_writer.release()
 
-            print("current_contor inainte de verificare current_contor == previous_contor", current_contor)
-
-            # if previous_contor == current_contor and previous_contor == 0:
-            #     print("Nu s-a sesizat miscare, oprim")
-            #     break     # daca nu s-a sesizat nici-o miscare oprim filmarea, daca nu continuam cu inca 20 de secunde
-
-            # previous_contor = current_contor
-            # current_contor = 0
-
             previous_fname = fname
-            fname = filename.setFileName(dt.datetime.now().strftime('%Y-%m-%d') + "-" + dt.datetime.now().strftime('%H-%M-%S'))
+            fname = filename.setFileName(
+            dt.datetime.now().strftime('%Y-%m-%d') + "-" + dt.datetime.now().strftime('%H-%M-%S'))
+
+
+            print("Inainte de if previous contor:" + str(previous_contor) + " current contor: " + str(current_contor))
+            # t = Thread(target=upload.run, args=(previous_fname,))
+
+            if current_contor > 0 or previous_contor > 0:
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(uploadToFirebase.uploadToFirebase, previous_fname + ".mp4")
+                    return_value = future.result()
+                    if return_value == "Done":
+                        executor.shutdown(True)
+
+
+            previous_contor = current_contor
+            current_contor = 0
 
             video_writer = cv2.VideoWriter(fname+".mp4", fourcc, 30, (int(vs.stream.get(3)), int(vs.stream.get(4))))
             start = dt.datetime.now()
@@ -141,8 +146,9 @@ def detect_motion(frameCount):
                 (thresh, (minX, minY, maxX, maxY)) = motion
                 cv2.rectangle(frame, (minX, minY), (maxX, maxY),
                               (0, 0, 255), 2)
-                # current_contor += 1
-                # print("contor=", current_contor)
+
+                current_contor += 1
+                print("current contor: " + str(current_contor))
 
         # update the background model and increment the total number
         # of frames read thus far
@@ -153,9 +159,6 @@ def detect_motion(frameCount):
         # lock
         with lock:
             outputFrame = frame.copy()
-    print("Iesim cu totul din detect_motion")
-
-    return
 
 
 def generate():
@@ -190,44 +193,25 @@ def video_feed():
     return Response(generate(),
                     mimetype="multipart/x-mixed-replace; boundary=frame")
 
-def shutdown_server():
-    func = request.environ.get('werkzeug.server.shutdown')
-    print("Func este:", func)
-    if func is None:
-        raise RuntimeError("Not running with the Werkzeug Server")
-    func()
-
-@app.route('/shutdown', methods=['POST'])
-def shutdown():
-    shutdown_server()
-    return 'Server is shutting down'
-
 
 def start_streaming():
-    # while True:
-    #     if MotionSensor.detect_motion() == 1:
-
     t = threading.Thread(target=detect_motion, args=(30,))
-    # t.daemon = True
+    t.daemon = True
     t.start()
-    t1 = threading.Thread(target=uploadFiles)
+
+    t1 = threading.Thread(target=activate_servo)
     t1.start()
 
     # start the flask app
     app.run(host="0.0.0.0", port=8000,
             threaded=True, use_reloader=False, debug=True)
-    print(t.is_alive())
-    print(t1.is_alive())
 
 
 def main():
     # start a thread that will perform motion detection
     start_streaming()
 
-# check to see if this is the main thread of execution
 if __name__ == '__main__':
     main()
 
 vs.stop()
-
-

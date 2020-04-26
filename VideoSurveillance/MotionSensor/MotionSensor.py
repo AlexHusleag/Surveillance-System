@@ -1,6 +1,4 @@
-import time
 import RPi.GPIO as GPIO
-from camera import camera
 
 
 GPIO.setwarnings(False)
@@ -16,9 +14,3 @@ def detect_motion():
         elif i == 1:
             print("Motion detected" * 3)
             return 1
-
-
-# def detect_motion_and_record():
-#     while True:
-#         if detect_motion():
-#             camera.record()

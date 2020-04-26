@@ -193,6 +193,8 @@
       <workItem from="1586162722685" duration="604000" />
       <workItem from="1586172163648" duration="4261000" />
       <workItem from="1586688083999" duration="729000" />
+      <workItem from="1587898639335" duration="9065000" />
+      <workItem from="1587911799604" duration="8085000" />
     </task>
     <servers />
   </component>
@@ -208,30 +210,30 @@
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
     <state x="449" y="267" width="565" height="389" key="#com.intellij.fileTypes.FileTypeChooser/0.36.1600.1164@0.36.1600.1164" timestamp="1585321603170" />
-    <state x="314" y="219" width="526" height="501" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583007781519">
+    <state x="314" y="219" width="526" height="501" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587905339616">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
-    <state x="314" y="219" width="526" height="501" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.36.1600.1164@0.36.1600.1164" timestamp="1583007781519" />
+    <state x="314" y="219" width="526" height="501" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.36.1600.1164@0.36.1600.1164" timestamp="1587905339616" />
     <state x="607" y="206" width="426" height="484" key="FileChooserDialogImpl" timestamp="1582978981818">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
     <state x="607" y="206" width="426" height="484" key="FileChooserDialogImpl/0.36.1600.1164@0.36.1600.1164" timestamp="1582978981818" />
-    <state width="1512" height="220" key="GridCell.Tab.0.bottom" timestamp="1586688812037">
+    <state width="1512" height="220" key="GridCell.Tab.0.bottom" timestamp="1587919892757">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
-    <state width="1512" height="220" key="GridCell.Tab.0.bottom/0.36.1600.1164@0.36.1600.1164" timestamp="1586688812037" />
-    <state width="1512" height="220" key="GridCell.Tab.0.center" timestamp="1586688812036">
+    <state width="1512" height="220" key="GridCell.Tab.0.bottom/0.36.1600.1164@0.36.1600.1164" timestamp="1587919892757" />
+    <state width="1512" height="220" key="GridCell.Tab.0.center" timestamp="1587919892755">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
-    <state width="1512" height="220" key="GridCell.Tab.0.center/0.36.1600.1164@0.36.1600.1164" timestamp="1586688812036" />
-    <state width="1512" height="220" key="GridCell.Tab.0.left" timestamp="1586688812036">
+    <state width="1512" height="220" key="GridCell.Tab.0.center/0.36.1600.1164@0.36.1600.1164" timestamp="1587919892755" />
+    <state width="1512" height="220" key="GridCell.Tab.0.left" timestamp="1587919892754">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
-    <state width="1512" height="220" key="GridCell.Tab.0.left/0.36.1600.1164@0.36.1600.1164" timestamp="1586688812036" />
-    <state width="1512" height="220" key="GridCell.Tab.0.right" timestamp="1586688812037">
+    <state width="1512" height="220" key="GridCell.Tab.0.left/0.36.1600.1164@0.36.1600.1164" timestamp="1587919892754" />
+    <state width="1512" height="220" key="GridCell.Tab.0.right" timestamp="1587919892756">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
-    <state width="1512" height="220" key="GridCell.Tab.0.right/0.36.1600.1164@0.36.1600.1164" timestamp="1586688812037" />
+    <state width="1512" height="220" key="GridCell.Tab.0.right/0.36.1600.1164@0.36.1600.1164" timestamp="1587919892756" />
     <state width="1512" height="294" key="GridCell.Tab.1.bottom" timestamp="1585419830795">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
@@ -252,14 +254,14 @@
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
     <state x="-296" y="232" key="SettingsEditor/0.36.1600.1164@0.36.1600.1164" timestamp="1585323518475" />
-    <state x="347" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1586688664963">
+    <state x="347" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1587911798703">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
-    <state x="347" y="271" key="com.intellij.ide.util.TipDialog/0.36.1600.1164@0.36.1600.1164" timestamp="1586688664963" />
-    <state x="432" y="117" width="685" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585398173332">
+    <state x="347" y="271" key="com.intellij.ide.util.TipDialog/0.36.1600.1164@0.36.1600.1164" timestamp="1587911798703" />
+    <state x="432" y="117" width="685" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587903006198">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
-    <state x="432" y="117" width="685" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.36.1600.1164@0.36.1600.1164" timestamp="1585398173332" />
+    <state x="432" y="117" width="685" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.36.1600.1164@0.36.1600.1164" timestamp="1587903006198" />
     <state x="565" y="150" width="503" height="710" key="refactoring.ChangeSignatureDialog" timestamp="1585410787295">
       <screen x="0" y="36" width="1600" height="1164" />
     </state>
@@ -267,7 +269,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/VideoSurveillance$hello.coverage" NAME="hello Coverage Results" MODIFIED="1582979006135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VideoSurveillance$webstreaming.coverage" NAME="webstreaming Coverage Results" MODIFIED="1586688721637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VideoSurveillance$webstreaming.coverage" NAME="webstreaming Coverage Results" MODIFIED="1587919494017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VideoSurveillance$livestream5.coverage" NAME="livestream5 Coverage Results" MODIFIED="1584213870764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/camera" />
     <SUITE FILE_PATH="coverage/VideoSurveillance$livestream2.coverage" NAME="livestream2 Coverage Results" MODIFIED="1585316093996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/camera" />
     <SUITE FILE_PATH="coverage/VideoSurveillance$livestream.coverage" NAME="livestream Coverage Results" MODIFIED="1584185131605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/camera" />

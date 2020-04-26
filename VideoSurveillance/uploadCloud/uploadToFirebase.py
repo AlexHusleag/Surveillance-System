@@ -22,3 +22,4 @@ def uploadToFirebase(file):
     videoBlob.upload_from_filename(videoPath)
 
     print("File uploaded to firebase")
+    return "Done"

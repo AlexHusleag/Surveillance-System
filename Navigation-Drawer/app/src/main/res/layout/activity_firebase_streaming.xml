@@ -1,86 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewVideo">
+    tools:context=".ViewVideos.ViewVideo">
 
-    <VideoView
-        android:id="@+id/mainVideoView"
+
+    <com.google.android.exoplayer2.ui.PlayerView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <LinearLayout
-        android:layout_width="416dp"
-        android:layout_height="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-
-        android:layout_marginStart="-5dp"
-        android:layout_marginTop="301dp"
-        android:background="@color/colorPrimary"
-        android:gravity="start"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/mainVideoView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainVideoView"
-        app:layout_constraintVertical_bias="1.0">
-
-        <ImageView
-            android:id="@+id/playBtn"
-            android:layout_width="66dp"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/plyBtn"
-            app:srcCompat="@android:drawable/ic_media_play" />
-
-        <TextView
-            android:id="@+id/currentTimer"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/defaultDuration"
-            android:textColor="@color/white" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:id="@+id/videoProgress"
-            android:layout_width="227dp"
-            android:layout_height="match_parent" />
-
-        <TextView
-            android:id="@+id/durationTimer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/defaultDuration"
-            android:textColor="@color/white" />
-
-
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/bufferProgress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="65dp"
-        android:layout_height="72dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="108dp"
-        android:indeterminate="true" />
-
+        android:layout_height="match_parent"
+        android:id="@+id/playerview"
+        />
 </RelativeLayout>

@@ -1,15 +1,18 @@
-package com.example.navigation;
+package com.example.navigation.ViewVideos;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.navigation.R;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -33,7 +36,7 @@ public class VideoListAdapter extends ArrayAdapter<StorageReference> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View vi = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
         if (vi == null) {
@@ -51,6 +54,8 @@ public class VideoListAdapter extends ArrayAdapter<StorageReference> {
 
             holder.path = (TextView) vi.findViewById(R.id.videoTextView3);
             holder.path.setText(path);
+
+
         } else {
             holder = (ViewHolder) vi.getTag();
         }
@@ -63,4 +68,5 @@ public class VideoListAdapter extends ArrayAdapter<StorageReference> {
         private TextView bucket;
         private TextView path;
     }
+
 }

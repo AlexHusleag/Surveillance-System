@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.navigation">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,19 +13,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".ListVideos"></activity>
-        <activity android:name=".ListVideoDates" />
-        <activity android:name=".ViewVideo" />
-        <activity android:name=".Servo" />
-        <activity android:name=".Livestream" />
-        <activity android:name=".MainActivity">
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".ViewVideos.ExtendedListVideos.RecycleView" />
+        <activity android:name=".ViewVideos.ListVideos" />
+        <activity android:name=".ViewFolders.ListVideoDates" />
+        <activity android:name=".ViewVideos.ViewVideo" />
+        <activity android:name=".Servo.Servo" />
+        <activity android:name=".Livestream.Livestream" />
+        <activity android:name=".FirebaseAuthentication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+        <activity android:name=".MainActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
     </application>
 
 </manifest>

@@ -1,10 +1,12 @@
-package com.example.navigation;
+package com.example.navigation.Livestream;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.navigation.R;
 
 public class Livestream extends AppCompatActivity {
 

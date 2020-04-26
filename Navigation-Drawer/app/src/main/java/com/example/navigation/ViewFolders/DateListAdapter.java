@@ -1,4 +1,4 @@
-package com.example.navigation;
+package com.example.navigation.ViewFolders;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.navigation.R;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;

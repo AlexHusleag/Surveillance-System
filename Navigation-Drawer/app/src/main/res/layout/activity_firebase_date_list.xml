@@ -6,12 +6,30 @@
     android:orientation="horizontal"
     tools:context=".ViewFolders.ListVideoDates">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/topHeader_dateList">
+
+        <ImageButton
+            android:id="@+id/refreshButtonDates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:paddingLeft="10dp"
+            android:paddingTop="12dp"
+            android:src="@drawable/ic_refresh_black_24dp"
+            android:visibility="visible" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/videoDateList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_height="556dp"
         android:layout_alignParentStart="true"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="47dp" />
 
 </RelativeLayout>

@@ -6,11 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.navigation.ViewVideos.ListVideos;
 import com.example.navigation.R;
@@ -31,11 +36,14 @@ public class ListVideoDates extends AppCompatActivity {
 
     private ListView videoDateList;
     private DateListAdapter dateListAdapter;
+    private ImageButton refreshButton;
 
     public static FirebaseStorage storage = null;
     private StorageReference storageRef = null;
 
     private ArrayList<StorageReference> folderPaths = new ArrayList<>();
+
+    private int parentViewPosition;
 
 
     @Override
@@ -45,9 +53,93 @@ public class ListVideoDates extends AppCompatActivity {
         setContentView(R.layout.activity_firebase_date_list);
 
         videoDateList = findViewById(R.id.videoDateList);
+        refreshButton = findViewById(R.id.refreshButtonDates);
 
-        new UserModel().execute();
+        listAllFolderContent();
+        makeDeleteButtonVisible();
+        refreshPage();
     }
+
+
+    public void onDeleteButtonCliCk(final View view) {
+        final TextView folderName = view.findViewById(R.id.textView1);
+        Button button = view.findViewById(R.id.deleteFolderButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteFolder(folderName.getText().toString());
+            }
+        });
+    }
+
+    public void deleteFolder(final String folderName) {
+        storageRef.child(folderName).listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            @Override
+            public void onSuccess(ListResult listResult) {
+                for (StorageReference storageReference : listResult.getItems()) {
+                    storageReference.delete();
+                }
+                Toast.makeText(getApplicationContext(), "Folder sters cu succes",
+                        Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Stergerea a esuat",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+    public void ifEmptyHeaderGone() {
+        ArrayList<String> files = new ArrayList<>();
+
+        for (StorageReference storageReference : folderPaths)
+            files.add(storageReference.getPath());
+
+        if (files.isEmpty()) {
+            View v = findViewById(R.id.topHeader_dateList);
+            v.setVisibility(View.GONE);
+        }
+    }
+
+
+    public void makeDeleteButtonVisible() {
+        videoDateList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                parentViewPosition = position;
+                view.findViewById(R.id.deleteFolderButton).setVisibility(View.VISIBLE);
+                onDeleteButtonCliCk(view);
+                makeDeleteButtonGone(view);
+                return true;
+            }
+        });
+    }
+
+    public void makeDeleteButtonGone(final View view) {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                view.findViewById(R.id.deleteFolderButton).setVisibility(View.GONE);
+            }
+        }, 5000);
+    }
+
+
+    public void refreshPage() {
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+    }
+
 
     // Store all folder locations in an ArrayList<>
     public void listAllFolderContent() {
@@ -55,11 +147,9 @@ public class ListVideoDates extends AppCompatActivity {
             @Override
             public void onCallback(List<StorageReference> storageReferences) {
                 folderPaths = new ArrayList<>(storageReferences);
-                System.out.println("FOLDER PATHS: " + folderPaths);
-
                 dateListAdapter = new DateListAdapter(getApplicationContext(), R.layout.adapter_firebase_date_list_layout, folderPaths);
                 videoDateList.setAdapter(dateListAdapter);
-
+                ifEmptyHeaderGone();
                 onListViewItemClick(videoDateList);
             }
         });
@@ -111,25 +201,6 @@ public class ListVideoDates extends AppCompatActivity {
 
     private interface FirestoreCallback {
         void onCallback(List<StorageReference> storageReferences);
-    }
-
-
-    public class UserModel extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            listAllFolderContent();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-
-        }
     }
 }
 

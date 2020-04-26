@@ -79,22 +79,16 @@ public class ListVideos extends AppCompatActivity {
         playVideo();
         makeButtonsVisible();
         uploadAllDownloadURIS();
-
-
     }
 
 
     public void updateListViewAdapter(int parentViewPosition) {
-//        videoListAdapter.remove(videoListAdapter.getItem(parentViewPosition));
-//        videoListAdapter.notifyDataSetChanged();
-        finish();
-        startActivity(getIntent());
-        Toast.makeText(getApplicationContext(), "Element sters cu succes",
-                Toast.LENGTH_LONG).show();
+        videoListAdapter.remove(videoListAdapter.getItem(parentViewPosition));
+        videoListAdapter.notifyDataSetChanged();
     }
 
 
-    public void refreshPage(){
+    public void refreshPage() {
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,8 +121,6 @@ public class ListVideos extends AppCompatActivity {
 
 
     public void uploadAllDownloadURIS() {
-
-        final ArrayList<Uri> uris = new ArrayList<>();
         final AtomicInteger integer = new AtomicInteger();
         integer.set(1);
 
@@ -142,7 +134,6 @@ public class ListVideos extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     int current = integer.getAndIncrement();
                                     System.out.println("SET MDATASAE: " + mDatabase.child(file.getParent().getPath()));
-                                    uris.add(uri);
                                     mDatabase.child(file.getParent().getPath()).child(String.valueOf(current))
                                             .setValue(new MediaObject(file.getName(), uri.toString()));
                                 }
@@ -179,7 +170,7 @@ public class ListVideos extends AppCompatActivity {
     }
 
 
-    public void ifEmptyToggleButtonGone() {
+    public void ifEmptyHeaderGone() {
 
         ArrayList<String> files = new ArrayList<>();
 
@@ -187,7 +178,7 @@ public class ListVideos extends AppCompatActivity {
             files.add(storageReference.getPath());
 
         if (files.isEmpty()) {
-            View v = findViewById(R.id.switchButton);
+            View v = findViewById(R.id.topHeader_videoList);
             v.setVisibility(View.GONE);
         }
     }
@@ -203,14 +194,14 @@ public class ListVideos extends AppCompatActivity {
                 view.findViewById(R.id.downloadButton).setVisibility(View.VISIBLE);
                 onDownloadButtonClick(view);
                 onDeleteButtonCliCk(view);
-                makeButtonsInvisible(view);
+                makeButtonsGone(view);
                 return true;
             }
         });
     }
 
 
-    public void makeButtonsInvisible(final View view) {
+    public void makeButtonsGone(final View view) {
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -295,9 +286,10 @@ public class ListVideos extends AppCompatActivity {
                         storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-
+                                Toast.makeText(getApplicationContext(), "Element sters cu succes",
+                                        Toast.LENGTH_LONG).show();
                                 updateListViewAdapter(parentViewPosition);
-
+                                ifEmptyHeaderGone();
                                 deleteDatabaseDownloadReference(mDatabase);
                                 uploadAllDownloadURIS();
                             }
@@ -354,7 +346,7 @@ public class ListVideos extends AppCompatActivity {
                 filesReferences = new ArrayList<>(storageReferences);
                 videoListAdapter = new VideoListAdapter(getApplicationContext(), R.layout.adapter_firebase_video_list_layout, filesReferences);
                 videoList.setAdapter(videoListAdapter);
-                ifEmptyToggleButtonGone();
+                ifEmptyHeaderGone();
             }
         });
     }

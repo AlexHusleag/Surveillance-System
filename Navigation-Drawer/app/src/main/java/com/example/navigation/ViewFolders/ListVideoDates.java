@@ -2,13 +2,17 @@ package com.example.navigation.ViewFolders;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -30,20 +34,18 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListVideoDates extends AppCompatActivity {
 
-    private static final String LOG = "ListLiveVideosActivity";
+public class ListVideoDates extends AppCompatActivity {
 
     private ListView videoDateList;
     private DateListAdapter dateListAdapter;
+
     private ImageButton refreshButton;
+    private StorageReference storageRef = null;
+    private ArrayList<StorageReference> folderPaths = new ArrayList<>();
+    private Toolbar toolbar;
 
     public static FirebaseStorage storage = null;
-    private StorageReference storageRef = null;
-
-    private ArrayList<StorageReference> folderPaths = new ArrayList<>();
-
-    private int parentViewPosition;
 
 
     @Override
@@ -52,12 +54,42 @@ public class ListVideoDates extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_date_list);
 
+        toolbar = findViewById(R.id.toolbarDate);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("ZILE");
+        }
+
         videoDateList = findViewById(R.id.videoDateList);
         refreshButton = findViewById(R.id.refreshButtonDates);
 
         listAllFolderContent();
         makeDeleteButtonVisible();
         refreshPage();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                dateListAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
     }
 
 
@@ -109,7 +141,6 @@ public class ListVideoDates extends AppCompatActivity {
         videoDateList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                parentViewPosition = position;
                 view.findViewById(R.id.deleteFolderButton).setVisibility(View.VISIBLE);
                 onDeleteButtonCliCk(view);
                 makeDeleteButtonGone(view);
@@ -149,6 +180,7 @@ public class ListVideoDates extends AppCompatActivity {
                 folderPaths = new ArrayList<>(storageReferences);
                 dateListAdapter = new DateListAdapter(getApplicationContext(), R.layout.adapter_firebase_date_list_layout, folderPaths);
                 videoDateList.setAdapter(dateListAdapter);
+
                 ifEmptyHeaderGone();
                 onListViewItemClick(videoDateList);
             }

@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.navigation.R;
+import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
@@ -23,7 +25,6 @@ import java.util.ArrayList;
 
 public class ViewVideo extends AppCompatActivity {
 
-
     private static Uri videoUri;
     private PlayerView playerView;
     private SimpleExoPlayer player;
@@ -31,8 +32,6 @@ public class ViewVideo extends AppCompatActivity {
     private boolean playWhenReady = true;
     private int currentWindow = 0;
     private long playbackPosition = 0;
-
-    private ArrayList<Uri> uris;
 
     public static Uri getVideoUri() {
         return videoUri;
@@ -89,6 +88,15 @@ public class ViewVideo extends AppCompatActivity {
             playbackPosition = player.getCurrentPosition();
             currentWindow = player.getCurrentWindowIndex();
             player.release();
+
+            player.addListener(new ExoPlayer.EventListener() {
+                @Override
+                public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                    if (playbackState == Player.STATE_ENDED)
+                        finish();
+                }
+            });
+
             player = null;
         }
     }
@@ -126,6 +134,7 @@ public class ViewVideo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_streaming);
-        playerView = findViewById(R.id.playerview);
+        playerView = findViewById(R.id.playeriew);
+        playerView.setControllerAutoShow(false);
     }
 }

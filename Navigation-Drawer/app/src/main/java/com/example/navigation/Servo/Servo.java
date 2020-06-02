@@ -24,10 +24,9 @@ public class Servo extends AppCompatActivity {
     EditText ipAddress;
     EditText portAddress;
 
-    Socket myAppSocket = null;
-    public static String wifiModuleIp = "";
-    public static int wifiModulePort = 0;
-    public static String CMD = "0";
+    private static String wifiModuleIp = "";
+    private static int wifiModulePort = 0;
+    private static String CMD = "0";
     private static final String TAG = "MainActivity";
 
     @Override

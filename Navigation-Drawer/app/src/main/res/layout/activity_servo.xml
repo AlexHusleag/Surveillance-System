@@ -4,58 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="150dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Raspberry Pi Address"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
 
-    <EditText
-        android:id="@+id/ipAddress"
-        android:layout_width="217dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="192.168.192.235"
-        android:textSize="25sp"
-        />
+<!--        <TextView-->
+<!--            android:id="@+id/textView"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="168dp"-->
+<!--            android:layout_marginTop="160dp"-->
+<!--            android:text="Raspberry Pi Address"-->
+<!--            android:textSize="15sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:gravity="center" />-->
 
-    <Button
-        android:id="@+id/btnDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:text="Down"
-       />
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center">-->
 
-    <Button
-        android:id="@+id/btnUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="416dp"
-        android:text="Up"
-        />
+<!--            <EditText-->
+<!--                android:id="@+id/ipAddress"-->
+<!--                android:layout_width="217dp"-->
+<!--                android:layout_height="75dp"-->
+<!--                android:ems="10"-->
+<!--                android:inputType="textPersonName"-->
+<!--                android:text="192.168.192.235"-->
+<!--                android:textSize="25sp"-->
+<!--                tools:layout_editor_absoluteX="38dp"-->
+<!--                tools:layout_editor_absoluteY="211dp" />-->
 
-    <EditText
-        android:id="@+id/portNumber"
-        android:layout_width="90dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="40dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="21567"
-        android:textSize="25sp"
-         />
+<!--            <EditText-->
+<!--                android:id="@+id/portNumber"-->
+<!--                android:layout_width="90dp"-->
+<!--                android:layout_height="73dp"-->
+<!--                android:ems="10"-->
+<!--                android:inputType="textPersonName"-->
+<!--                android:text="21567"-->
+<!--                android:textSize="25sp"-->
+<!--                tools:layout_editor_absoluteX="279dp"-->
+<!--                tools:layout_editor_absoluteY="210dp" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btnDown"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:text="Left"-->
+<!--                tools:layout_editor_absoluteX="222dp"-->
+<!--                tools:layout_editor_absoluteY="324dp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btnUp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:text="Right"-->
+<!--                tools:layout_editor_absoluteX="103dp"-->
+<!--                tools:layout_editor_absoluteY="324dp" />-->
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
 
 </RelativeLayout>

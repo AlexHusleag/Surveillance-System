@@ -51,13 +51,17 @@
                     android:layout_width="122dp"
                     android:layout_height="37dp"
                     android:text="Delete"
-                    android:visibility="gone" />
+                    android:theme="@style/myButtonTheme"
+                    android:visibility="gone"
+                    android:shadowColor="@color/colorPrimary"
+                     />
 
                 <Button
                     android:id="@+id/downloadButton"
                     android:layout_width="122dp"
                     android:layout_height="37dp"
                     android:text="Download"
+                    android:theme="@style/myButtonTheme"
                     android:visibility="gone" />
             </LinearLayout>
 

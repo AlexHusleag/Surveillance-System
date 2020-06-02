@@ -3,7 +3,9 @@ package com.example.navigation.ViewVideos;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DownloadManager;
 import android.content.Context;
@@ -12,6 +14,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -44,27 +49,35 @@ public class ListVideos extends AppCompatActivity {
 
     private ListView videoList;
     private VideoListAdapter videoListAdapter;
-    public static SwitchCompat switchCompat;
     private ImageButton refreshButton;
-
     private Bundle extra;
-
-    public static DatabaseReference mDatabase;
     private StorageReference folderPath;
-
     private ArrayList<StorageReference> filesReferences = new ArrayList<>();
+    private Toolbar toolbar;
 
     private int parentViewPosition;
+
+    public static DatabaseReference mDatabase;
+    public static SwitchCompat switchCompat;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_video_list);
+
+        toolbar = findViewById(R.id.toolbarVideos);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Videouri");
+        }
+
+
         videoList = findViewById(R.id.videoList);
         switchCompat = findViewById(R.id.switchButton);
         refreshButton = findViewById(R.id.refreshButton);
-
 
         extra = getIntent().getBundleExtra("extra");
         folderPath = ListVideoDates.storage.getReference((String) extra.getSerializable("folderPath"));
@@ -79,6 +92,31 @@ public class ListVideos extends AppCompatActivity {
         playVideo();
         makeButtonsVisible();
         uploadAllDownloadURIS();
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                videoListAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
     }
 
 
@@ -166,7 +204,6 @@ public class ListVideos extends AppCompatActivity {
                         });
             }
         });
-
     }
 
 

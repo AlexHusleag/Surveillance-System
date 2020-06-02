@@ -8,49 +8,54 @@
     tools:context=".ViewVideos.ListVideos">
 
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarVideos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:gravity="end"
         android:orientation="horizontal"
-        android:id="@+id/topHeader_videoList">
-
-        <ImageButton
-            android:id="@+id/refreshButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_refresh_black_24dp"
-            android:background="@null"
-            android:paddingTop="12dp"
-            android:paddingLeft="10dp"
-            android:visibility="visible" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <LinearLayout
-            android:layout_width="278dp"
-            android:layout_height="match_parent" />
-
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/topHeader_videoList"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="315dp"
-            android:paddingEnd="0dp"
-            android:thumb="@drawable/custom_thumb"
-            app:showText="true"
-            app:track="@drawable/custom_track" />
-    </LinearLayout>
+            android:paddingStart="250dp"
+            android:orientation="horizontal">
 
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingEnd="0dp"
+                android:thumb="@drawable/custom_thumb"
+                app:showText="true"
+                app:track="@drawable/custom_track" />
+
+            <ImageButton
+                android:id="@+id/refreshButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+
+                android:paddingTop="0dp"
+                android:paddingStart="10dp"
+                android:src="@drawable/ic_refresh_black_24dp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/videoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp" />
 

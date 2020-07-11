@@ -1,5 +1,9 @@
 # Surveillance-System-Raspberry-Android
 
+Navigation-Drawer - Holds the Android side of the project
+VideoSurveillance - Raspberry Pi side of the project
+
+
 The project consists of two parts:
    - Raspberry Pi
    - Smartphone

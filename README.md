@@ -1,4 +1,4 @@
-# Surveillance-System-Raspberry-Android
+# Automated Video Surveillance System
 
 Navigation-Drawer - Holds the Android side of the project
 VideoSurveillance - Raspberry Pi side of the project
